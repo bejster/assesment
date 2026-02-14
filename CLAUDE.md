@@ -30,7 +30,18 @@ This is a Remotion video project. When asked to create videos, use the Remotion 
 
 ### Services & Skills
 - **Remotion**: Video creation framework (installed)
-- Add additional API keys and services below as needed
+- **ElevenLabs**: Voice cloning & TTS for voiceovers (configured)
+  - API key and Voice ID stored in `.env`
+  - Use `eleven_multilingual_v2` model (supports Polish and other languages)
+  - Generate voiceovers with: `node --env-file=.env --strip-types generate-voiceover.ts`
+  - Audio files go to `public/voiceover/`
+
+### Voiceover Workflow
+1. Edit scene texts in `generate-voiceover.ts`
+2. Run: `node --env-file=.env --strip-types generate-voiceover.ts`
+3. Audio files are saved to `public/voiceover/`
+4. Use `<Audio src={staticFile("voiceover/scene-name.mp3")} />` in compositions
+5. Use `calculateMetadata` to auto-size composition to audio length
 
 ### Style Guide
 - Default: white background, dark text, modern clean design
